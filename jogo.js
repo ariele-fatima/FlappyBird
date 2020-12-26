@@ -10,7 +10,7 @@ sprites.src = './sprites.png';
 const canvas = document.querySelector('canvas');
 const contexto = canvas.getContext('2d');
 
-
+let melhorPontuacao = 0;
 
 //[Plano de Fundo]
 const planoDeFundo = {
@@ -185,7 +185,20 @@ const mensagemGameOver = {
       mensagemGameOver.w, mensagemGameOver.h
     );
   },
+  atualiza(pontuacao, melhorPlacar){
+    
+    //Placar Final
+    contexto.font = '30px "VT323"';
+    contexto.fillStyle = 'black';
+    contexto.fillText(`${pontuacao}`, canvas.width - 80, 145);
+    if(pontuacao > melhorPlacar){
+      melhorPontuacao = pontuacao;
+    }
+    contexto.fillText(`${melhorPontuacao}`, canvas.width - 80, 190);
+
+  },
 };
+
 
 
 function criaCanos() {
@@ -303,6 +316,42 @@ function criarPlacar(){
 }
 
 
+//[Medalha]
+function criarMedalha() {
+  const medalha = {
+    spriteX: 0,
+    spriteY: 78,
+    largura: 44,
+    altura: 44,
+    x: 73,
+    y: 137,
+    pontuacaoFeita(pontuacao) { 
+      if(pontuacao >= 3 & pontuacao <= 5){
+        medalha.spriteX = 48
+      } 
+      if(pontuacao >= 6  & pontuacao <= 8){
+        medalha.spriteY = 124
+      }
+      if(pontuacao >= 9){
+        medalha.spriteX = 48,
+        medalha.spriteY = 124
+      }
+    },
+    desenha(pontuacao) {
+      medalha.pontuacaoFeita(pontuacao);
+      contexto.drawImage(
+        sprites,
+        medalha.spriteX, medalha.spriteY,
+        medalha.largura, medalha.altura,
+        medalha.x, medalha.y,
+        medalha.largura, medalha.altura,
+      );
+    }
+  }
+  return medalha;
+}
+
+
 //[Telas]
 const globais = {};
 let telaAtiva = {};
@@ -360,11 +409,15 @@ Telas.JOGO = {
 
 
 Telas.GAME_OVER = {
-  desenha(){
+  inicializa(){
+    globais.medalha = criarMedalha();
+  },
+  desenha(){    
     mensagemGameOver.desenha();
+    globais.medalha.desenha(globais.placar.pontuacao);
   },
   atualiza(){
-
+    mensagemGameOver.atualiza(globais.placar.pontuacao, melhorPontuacao);
   },
   click(){
     mudaParaTela(Telas.INICIO)
