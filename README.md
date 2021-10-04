@@ -30,9 +30,9 @@ Acesse o <a href="https://github.com/omariosouto/flappy-bird-devsoutinho">reposi
 ## 🎨 Demostração da Aplicação
 
 <p align="center">
-  <img alt="FlappyBird" title="Tela de inicio" src="./demo/Inicio.png" />
-  <img alt="FlappyBird" title="Jogando o jogo" src="./demo/Jogando.png" />
-  <img alt="FlappyBird" title="Tela de Game Over" src="./demo/GameOver.png" />
+  <img alt="FlappyBird" title="Tela de inicio" src="./demo/Inicio.png" height=400/>
+  <img alt="FlappyBird" title="Jogando o jogo" src="./demo/Jogando.png" height=400/>
+  <img alt="FlappyBird" title="Tela de Game Over" src="./demo/GameOver.png" height=400/>
 </p>
 
 <p align="center">
