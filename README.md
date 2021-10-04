@@ -36,7 +36,7 @@ Acesse o <a href="https://github.com/omariosouto/flappy-bird-devsoutinho">reposi
 </p>
 
 <p align="center">
-  <img alt="TheBurgerMobile" title="#TheBurgerMobile" src="./demo/Gameplay.gif">
+  <img alt="FlappyBird" title="Gameplay" src="./demo/Gameplay.gif">
 </p>
 
 <p align="center">
